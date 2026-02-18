@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+enum Role {
+  manager
+  client
+}
+
+model User {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  password String
+
+  role Role @default(client)
+
+  userAccount Account?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Account {
+  id String @id @default(uuid())
+  balance Decimal @db.Decimal(10,2) @default(10000)
+
+  userId String @unique @map("user_id")
+  user User @relation(fields: [userId], references: [id])
+
+  history History[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("account")
+}
+
+model History {
+  id String @id @default(uuid())
+  transactionValue Decimal @db.Decimal(10,2)
+  description String
+
+  accountId String @map("account_id")
+  account Account @relation(fields: [accountId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("history")
+}

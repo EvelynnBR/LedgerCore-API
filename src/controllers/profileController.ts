@@ -25,6 +25,7 @@ class ProfileController {
         role: true,
         userAccount: {
           select: {
+            id: true,
             balance: true,
           },
         },

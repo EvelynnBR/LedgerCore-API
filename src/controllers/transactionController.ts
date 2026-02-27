@@ -23,7 +23,7 @@ class TransactionController {
     }
 
     const bodySchema = z.object({
-      id: z.string().uuid({ message: "O Id de usuário inválido" }),
+      id: z.string().uuid({ message: "O Id da conta inválido" }),
       description: z.string().trim().min(1).optional().default("Valor enviado com sucesso"),
       value: z.number().positive(),
     })

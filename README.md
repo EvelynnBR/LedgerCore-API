@@ -1,6 +1,6 @@
 # LedgerCore API
 
-Bem-vindo ao **LedgerCore API**, uma aplicação backend robusta desenvolvida para gerenciamento de contas, transações e perfis de usuários, com foco em segurança e performance.
+**LedgerCore API**, uma aplicação backend robusta desenvolvida para gerenciamento de contas, transações e perfis de usuários, com foco em segurança e performance.
 
 ## 🚀 Tecnologias Utilizadas
 
